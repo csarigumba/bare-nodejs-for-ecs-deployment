@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: bp
+      MYSQL_DATABASE: bp
+      MYSQL_USER: bp
+      MYSQL_PASSWORD: bp
+    ports:
+      - "33310:3306"
+  cache:
+    image: redis:7.0
+    ports:
+      - "6379:6379"

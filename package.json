@@ -1,0 +1,26 @@
+{
+  "name": "bare-nodejs-for-ecs-deployment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csarigumba/bare-nodejs-for-ecs-deployment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csarigumba/bare-nodejs-for-ecs-deployment/issues"
+  },
+  "homepage": "https://github.com/csarigumba/bare-nodejs-for-ecs-deployment#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.1.1",
+    "redis": "^4.6.4",
+    "uuid": "^9.0.0"
+  }
+}
