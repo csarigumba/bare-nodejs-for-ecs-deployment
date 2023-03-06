@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/csarigumba/bare-nodejs-for-ecs-deployment#readme",
   "dependencies": {
+    "axios": "^1.3.3",
     "express": "^4.18.2",
     "mysql2": "^3.1.1",
     "redis": "^4.6.4",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "http": "0.0.1-security",
+    "websocket": "^1.0.31"
   }
 }
