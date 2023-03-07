@@ -40,14 +40,14 @@ const websocket = new WebSocketServer({
 // BP
 const BP_RDS_DB_HOST = 'bp-dev-app-db.cluster-cvh8idkwdnkt.ap-northeast-1.rds.amazonaws.com';
 const BP_RDS_DB_USER = 'appuser';
-const BP_RDS_DB_PASSWORD = 'x';
+const BP_RDS_DB_PASSWORD = 'H21X13VbwdQPAnkbr2ZO1jV0ZmJup1HC';
 const BP_RDS_DB_NAME = 'bp';
 const BP_RDS_DB_PORT = '3306';
 
 // SD
 const SD_RDS_DB_HOST = 'nw-dev-sd-proxy.proxy-cp9qt7cqaxsb.ap-northeast-1.rds.amazonaws.com';
 const SD_RDS_DB_USER = 'bpuser';
-const SD_RDS_DB_PASSWORD = 'x';
+const SD_RDS_DB_PASSWORD = '<>GsKbWS$Z5z)fZ.';
 const SD_RDS_DB_NAME = 'sd';
 const SD_RDS_DB_PORT = '3306';
 
@@ -137,7 +137,7 @@ const checkSAConnection = async () => {
   try {
     const response = await axios.get(sav2Url, {
       headers: {
-        'x-sa-api-key': 'x',
+        'x-sa-api-key': '323493cd-5ad4-46f7-8426-c53687f7cbc3',
       },
     });
     return response;

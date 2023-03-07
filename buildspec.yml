@@ -1,0 +1,27 @@
+version: 0.2
+run-as: root
+
+phases:
+  pre_build:
+    commands:
+      - echo Replace placeholder values with CodeBuild environment variables on application-$PROFILE.properties..
+      - echo Selectively use either "/" or "@" as regular expression delimiter to avoid conflict with replace target variable.
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME
+  build:
+    commands:
+      - IMAGE_TAG=$(date +%Y%m%d%H%M%S)
+      - echo Build started on $IMAGE_TAG
+      - echo Building the Docker image..
+      - docker build -t $ECR_REPO_NAME:$IMAGE_TAG -f Dockerfile .
+      - docker tag $ECR_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"%s","imageUri":"%s"}]' $ECS_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
